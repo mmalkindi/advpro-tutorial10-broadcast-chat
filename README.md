@@ -8,3 +8,19 @@ This setup involves 4 terminal tabs, 1 running the server using `cargo run --bin
 When a client connects, the server prints their IP address and sends the message `From server: Welcome to chat! Type a message`.
 Connected clients can type messages in the terminal tab and hit Enter to send it to the server. Everytime a client receives a message from a server, it will print it.
 For every message the server receives from a client, it will print the IP address alongside the message and then resends the message to all connected clients.
+
+## 2.2 Modifying the websocket port
+
+Other than `src/bin/client.rs`, we will also need to modify `src/bin/server.rs` to listen to port `8080` so the program still runs properly. Here are the changed lines:
+
+`src/bin/server.rs`  
+![server port change](img/server_port_change.png)
+
+`src/bin/client.rs`  
+![client port change](img/client_port_change.png)
+
+We can see they both use the same websocket protocol which is handled by `tokio_websockets`.
+This library helps us with defining websockets to make sure both the server and the client uses the same protocol so they can communicate properly.
+If we run the same setup as defined before, we can see that the program still works.
+
+![1 Server 3 Client using port 8080](img/server_3client_8080port.png)

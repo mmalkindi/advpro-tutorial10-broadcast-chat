@@ -24,3 +24,21 @@ This library helps us with defining websockets to make sure both the server and 
 If we run the same setup as defined before, we can see that the program still works.
 
 ![1 Server 3 Client using port 8080](img/server_3client_8080port.png)
+
+## 2.3 Small changes. Add some information to client
+
+Following changes are made:
+
+`src/bin/server.rs`  
+![server message change 1](img/server_message_change_1.png)
+![server message change 2](img/server_message_change_2.png)
+
+`src/bin/client.rs`  
+![client port change](img/client_message_change.png)
+
+The server will now include `Alkindi's Computer` in the client connection message text.
+It also sends the message's sender IP address and port alongside its text content when resending the message to all client.
+The client will now include `Alkindi's Computer -` in the server message text.
+Because of the changes from the server, it will also display the original sender's IP address and port when printing the server message text.
+
+![1 Server 3 Client after small change](img/server_3client_smallchange.png)
